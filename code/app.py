@@ -1,6 +1,8 @@
 import customtkinter as ctk
 import pandas as pd
 
+opcao = ["teste1", "teste2", "teste3"]
+
 app = ctk.CTk()
 app.title('BatManager')
 app.geometry('900x650')
@@ -34,10 +36,10 @@ buttonExecutar._set_appearance_mode('dark')
 
 # List
 
-
-
-
-
+def ao_selecionar(opcao):
+    print(f"Selecionado: {opcao}")
+lista = ctk.CTkOptionMenu(bottombar, values=opcao, command=ao_selecionar)
+lista.place()
 
 
 app.mainloop()
