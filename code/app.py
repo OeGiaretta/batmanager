@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 import tkinter.font as tkFont
 import pandas as pd
+import functions as fnc
 
 opcao = ["teste1", "teste2", "teste3"]
 
@@ -10,14 +11,13 @@ app.title("BatManager")
 app.geometry("900x650")
 app._set_appearance_mode("dark")
 
-
 # BottomBar e botões
 
 bottombar = ctk.CTkFrame(app, height=250, corner_radius=0)
 bottombar.pack(side="bottom", fill="x")
 bottombar._set_appearance_mode("dark")
 
-buttonIncluir = ctk.CTkButton(bottombar, text="Incluir", command=0)
+buttonIncluir = ctk.CTkButton(bottombar, text="Incluir", command=fnc.Inclusao)
 buttonIncluir.place(x=715, y=45)
 buttonIncluir._set_appearance_mode("dark")
 
@@ -56,10 +56,15 @@ def selecao(event):
 
 listbox.bind("<<ListboxSelect>>", selecao)
 
-# Ajustando Listbox
+# Criando função para os botões
 
+descCommand = 0
+command = 0
 
-
+newCommand = {
+    "Descrição" : descCommand,
+    "script" : command,
+}
 
 
 
