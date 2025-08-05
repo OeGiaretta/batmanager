@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import tkinter as tk
+import tkinter.font as tkFont
 import pandas as pd
 
 opcao = ["teste1", "teste2", "teste3"]
@@ -36,19 +37,34 @@ buttonExecutar._set_appearance_mode("dark")
 
 # List
 
-listbox = tk.Listbox(bottombar, height=10, width=110, selectmode=tk.SINGLE)
+fontListbox = tkFont.Font(family="Arial", size=11)
+listbox = tk.Listbox(
+    bottombar, 
+    height=10, 
+    width=80, 
+    selectmode=tk.SINGLE,
+    font=fontListbox
+    )
 listbox.place(x=30, y=45)
 
 for teste in opcao:
     listbox.insert(tk.END, opcao)
 
-
 def selecao(event):
     selecionado = listbox.get(listbox.curselection())
     print("Você selecionou:", selecao)
 
-
 listbox.bind("<<ListboxSelect>>", selecao)
+
+# Ajustando Listbox
+
+
+
+
+
+
+
+
 
 
 app.mainloop()
