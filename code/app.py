@@ -4,7 +4,9 @@ import tkinter.font as tkFont
 import pandas as pd
 import functions as fnc
 
-opcao = ["teste1", "teste2", "teste3"]
+from functions import *
+
+opcao = []
 
 app = ctk.CTk()
 app.title("BatManager")
@@ -50,20 +52,11 @@ listbox.place(x=30, y=45)
 for teste in opcao:
     listbox.insert(tk.END, opcao)
 
+# Adicionando na lista
 def selecao(event):
     selecionado = listbox.get(listbox.curselection())
-    print("Você selecionou:", selecao)
-
 listbox.bind("<<ListboxSelect>>", selecao)
 
-# Criando função para os botões
 
-descCommand = 0
-command = 0
-
-newCommand = {
-    "Descrição" : descCommand,
-    "script" : command,
-}
 
 app.mainloop()
