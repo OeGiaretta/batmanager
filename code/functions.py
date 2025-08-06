@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 import tkinter.font as tkFont
 import pandas as pd
+import subprocess as sp
 
 eScript = 0
 inScript = 0
@@ -44,3 +45,11 @@ def Inclusao():
     inCommand._set_appearance_mode("dark")
 
     app.mainloop()
+
+def exeCommand():
+    selecionado = listbox.curselection()
+    if selecionado:
+        idx = selecionado[0]
+        comando = ferramentas[idx]["Script"]
+        sp.run(comando, shell)
+        print("Executando:", comando)

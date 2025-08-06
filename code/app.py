@@ -3,8 +3,14 @@ import tkinter as tk
 import tkinter.font as tkFont
 import pandas as pd
 import functions as fnc
-
+import json 
 from functions import *
+
+with open(
+    "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
+    encoding="utf-8"
+    ) as f:
+    ferramentas = json.load(f)
 
 opcao = []
 
@@ -49,14 +55,12 @@ listbox = tk.Listbox(
     )
 listbox.place(x=30, y=45)
 
-for teste in opcao:
-    listbox.insert(tk.END, opcao)
+for command in opcao:
+    listbox.insert(tk.END, command["Descrição"])
 
 # Adicionando na lista
 def selecao(event):
     selecionado = listbox.get(listbox.curselection())
 listbox.bind("<<ListboxSelect>>", selecao)
-
-
 
 app.mainloop()
