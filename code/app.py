@@ -66,10 +66,4 @@ newCommand = {
     "script" : command,
 }
 
-
-
-
-
-
-
 app.mainloop()
