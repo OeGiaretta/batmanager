@@ -55,8 +55,8 @@ listbox = tk.Listbox(
     )
 listbox.place(x=30, y=45)
 
-for command in opcao:
-    listbox.insert(tk.END, command["Descrição"])
+for item in ferramentas:
+    listbox.insert(tk.END, item["Descrição"])
 
 # Adicionando na lista
 def selecao(event):
