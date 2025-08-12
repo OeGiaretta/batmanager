@@ -3,12 +3,23 @@ import tkinter as tk
 import tkinter.font as tkFont
 import pandas as pd
 import subprocess as sp
+import json 
+
 
 eScript = 0
 inScript = 0
 
+
+
 def Inclusao():
 
+    with open(
+    "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
+    encoding="utf-8"
+    ) as f:
+        ferramentas = json.load(f)
+
+    global eScript, inScript, app
     app = ctk.CTk()
     app.title("Inclusão de Script")
     app.geometry("500x500")
@@ -39,17 +50,29 @@ def Inclusao():
     inScript = eScript.get()
     eScript._set_appearance_mode("dark")
 
+    def incluir_script():
+    # Verifica se os campos estão preenchidos
+        if eDesc.get() and eScript.get():
+            nova_ferramenta = {
+                "Descrição": eDesc.get(),
+                "Script": eScript.get()
+            }
+            ferramentas.append(nova_ferramenta)
+            with open(
+                "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
+                "w",  # modo escrita
+                encoding="utf-8"
+            ) as f:
+                json.dump(ferramentas, f, indent=4, ensure_ascii=False)
+            
+        # Fecha a janela de inclusão
+            app.destroy()
+
     # Botão de inclusão
-    inCommand = ctk.CTkButton(app, text="Incluir", command=0)
+    inCommand = ctk.CTkButton(app, text="Incluir", command=incluir_script)
     inCommand.place(x=180, y=400)
     inCommand._set_appearance_mode("dark")
 
-    app.mainloop()
 
-def exeCommand():
-    selecionado = listbox.curselection()
-    if selecionado:
-        idx = selecionado[0]
-        comando = ferramentas[idx]["Script"]
-        sp.run(comando, shell)
-        print("Executando:", comando)
+
+    app.mainloop()

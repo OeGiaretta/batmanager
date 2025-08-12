@@ -1,122 +1,126 @@
 [
-  {
-    "Descrição": "Ver Meu Ip",
-    "Script": "ipconfig"
-  },
-  {
-    "Descrição": "Testar Conexao Internet (ping 8.8.8.8)",
-    "Script": "ping 8.8.8.8"
-  },
-  {
-    "Descrição": "Testar Chapeco - Embratel",
-    "Script": "ping <ip_Embratel>"
-  },
-  {
-    "Descrição": "Testar Chapeco - EntrenaNet",
-    "Script": "ping <ip_EntrenaNet>"
-  },
-  {
-    "Descrição": "Limpar Impressao",
-    "Script": "net stop spooler && del /Q /F %systemroot%\\System32\\spool\\PRINTERS\\* && net start spooler"
-  },
-  {
-    "Descrição": "Verificar Conexoes abertas",
-    "Script": "netstat -an"
-  },
-  {
-    "Descrição": "Reiniciar Computador p/Rede",
-    "Script": "shutdown /r /m \\\\<nome_pc>"
-  },
-  {
-    "Descrição": "Desligar Computador p/Rede",
-    "Script": "shutdown /s /m \\\\<nome_pc>"
-  },
-  {
-    "Descrição": "Anular Desligamento p/Rede",
-    "Script": "shutdown /a /m \\\\<nome_pc>"
-  },
-  {
-    "Descrição": "Enviar Menssagem p/Rede",
-    "Script": "msg * \"Sua mensagem aqui\""
-  },
-  {
-    "Descrição": "Remoto Ipconfig",
-    "Script": "psexec \\\\<nome_pc> ipconfig"
-  },
-  {
-    "Descrição": "Servico VNC - Status",
-    "Script": "sc \\\\<nome_pc> query winvnc"
-  },
-  {
-    "Descrição": "Servico VNC - Parar",
-    "Script": "sc \\\\<nome_pc> stop winvnc"
-  },
-  {
-    "Descrição": "Servico VNC - Iniciar",
-    "Script": "sc \\\\<nome_pc> start winvnc"
-  },
-  {
-    "Descrição": "Remoto Informacoes de Sistema",
-    "Script": "systeminfo"
-  },
-  {
-    "Descrição": "Verificar Sistema Operacional do Computador p/rede",
-    "Script": "wmic os get Caption"
-  },
-  {
-    "Descrição": "Verificar usuario logado no Desktop",
-    "Script": "query user"
-  },
-  {
-    "Descrição": "Instalar Software p/Rede",
-    "Script": "psexec \\\\<nome_pc> msiexec /i caminho_instalador.msi"
-  },
-  {
-    "Descrição": "Desinstalar Software p/Rede",
-    "Script": "psexec \\\\<nome_pc> msiexec /x caminho_instalador.msi"
-  },
-  {
-    "Descrição": "Listar Softwares Instalados p/Rede",
-    "Script": "wmic product get name"
-  },
-  {
-    "Descrição": "Listar impressoras instaladas p/Rede",
-    "Script": "wmic printer get name"
-  },
-  {
-    "Descrição": "Descobrir MAC do usuario pelo ip",
-    "Script": "arp -a <ip_usuario>"
-  },
-  {
-    "Descrição": "Verificar Sys_Op p/rede 2.0",
-    "Script": "systeminfo"
-  },
-  {
-    "Descrição": "Instalar impressora p/Rede",
-    "Script": "rundll32 printui.dll,PrintUIEntry /in /n \\\\<nome_impressora>"
-  },
-  {
-    "Descrição": "Visualizar Chave office",
-    "Script": "wmic path softwarelicensingservice get OA3xOriginalProductKey"
-  },
-  {
-    "Descrição": "HDD ou SDD p/Rede",
-    "Script": "wmic diskdrive get model,mediaType"
-  },
-  {
-    "Descrição": "FlushDNS Remoto",
-    "Script": "ipconfig /flushdns"
-  },
-  {
-    "Descrição": "RegisterDNS Remoto",
-    "Script": "ipconfig /registerdns"
-  },
-  {
-    "Descrição": "Fechar programas p/Rede",
-    "Script": "taskkill /IM nome_programa.exe /F"
-  },
-  {
-    "Descrição": "Criar novo projeto JAVA",
-    "Script": "call mvn archetype:generate -DgroupId=com.main -DartifactId=<nome_projeto> -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false"
-  }
+    {
+        "Descrição": "Ver Meu Ip",
+        "Script": "ipconfig"
+    },
+    {
+        "Descrição": "Testar Conexao Internet (ping 8.8.8.8)",
+        "Script": "ping 8.8.8.8"
+    },
+    {
+        "Descrição": "Testar Chapeco - Embratel",
+        "Script": "ping <ip_Embratel>"
+    },
+    {
+        "Descrição": "Testar Chapeco - EntrenaNet",
+        "Script": "ping <ip_EntrenaNet>"
+    },
+    {
+        "Descrição": "Limpar Impressao",
+        "Script": "net stop spooler && del /Q /F %systemroot%\\System32\\spool\\PRINTERS\\* && net start spooler"
+    },
+    {
+        "Descrição": "Verificar Conexoes abertas",
+        "Script": "netstat -an"
+    },
+    {
+        "Descrição": "Reiniciar Computador p/Rede",
+        "Script": "shutdown /r /m \\\\<nome_pc>"
+    },
+    {
+        "Descrição": "Desligar Computador p/Rede",
+        "Script": "shutdown /s /m \\\\<nome_pc>"
+    },
+    {
+        "Descrição": "Anular Desligamento p/Rede",
+        "Script": "shutdown /a /m \\\\<nome_pc>"
+    },
+    {
+        "Descrição": "Enviar Menssagem p/Rede",
+        "Script": "msg * \"Sua mensagem aqui\""
+    },
+    {
+        "Descrição": "Remoto Ipconfig",
+        "Script": "psexec \\\\<nome_pc> ipconfig"
+    },
+    {
+        "Descrição": "Servico VNC - Status",
+        "Script": "sc \\\\<nome_pc> query winvnc"
+    },
+    {
+        "Descrição": "Servico VNC - Parar",
+        "Script": "sc \\\\<nome_pc> stop winvnc"
+    },
+    {
+        "Descrição": "Servico VNC - Iniciar",
+        "Script": "sc \\\\<nome_pc> start winvnc"
+    },
+    {
+        "Descrição": "Remoto Informacoes de Sistema",
+        "Script": "systeminfo"
+    },
+    {
+        "Descrição": "Verificar Sistema Operacional do Computador p/rede",
+        "Script": "wmic os get Caption"
+    },
+    {
+        "Descrição": "Verificar usuario logado no Desktop",
+        "Script": "query user"
+    },
+    {
+        "Descrição": "Instalar Software p/Rede",
+        "Script": "psexec \\\\<nome_pc> msiexec /i caminho_instalador.msi"
+    },
+    {
+        "Descrição": "Desinstalar Software p/Rede",
+        "Script": "psexec \\\\<nome_pc> msiexec /x caminho_instalador.msi"
+    },
+    {
+        "Descrição": "Listar Softwares Instalados p/Rede",
+        "Script": "wmic product get name"
+    },
+    {
+        "Descrição": "Listar impressoras instaladas p/Rede",
+        "Script": "wmic printer get name"
+    },
+    {
+        "Descrição": "Descobrir MAC do usuario pelo ip",
+        "Script": "arp -a <ip_usuario>"
+    },
+    {
+        "Descrição": "Verificar Sys_Op p/rede 2.0",
+        "Script": "systeminfo"
+    },
+    {
+        "Descrição": "Instalar impressora p/Rede",
+        "Script": "rundll32 printui.dll,PrintUIEntry /in /n \\\\<nome_impressora>"
+    },
+    {
+        "Descrição": "Visualizar Chave office",
+        "Script": "wmic path softwarelicensingservice get OA3xOriginalProductKey"
+    },
+    {
+        "Descrição": "HDD ou SDD p/Rede",
+        "Script": "wmic diskdrive get model,mediaType"
+    },
+    {
+        "Descrição": "FlushDNS Remoto",
+        "Script": "ipconfig /flushdns"
+    },
+    {
+        "Descrição": "RegisterDNS Remoto",
+        "Script": "ipconfig /registerdns"
+    },
+    {
+        "Descrição": "Fechar programas p/Rede",
+        "Script": "taskkill /IM nome_programa.exe /F"
+    },
+    {
+        "Descrição": "Criar novo projeto JAVA",
+        "Script": "call mvn archetype:generate -DgroupId=com.main -DartifactId=<nome_projeto> -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false"
+    },
+    {
+        "Descrição": "teste",
+        "Script": "teste"
+    }
 ]

@@ -54,7 +54,6 @@ listbox = tk.Listbox(
     font=fontListbox
     )
 listbox.place(x=30, y=45)
-
 for item in ferramentas:
     listbox.insert(tk.END, item["Descrição"])
 
@@ -62,5 +61,7 @@ for item in ferramentas:
 def selecao(event):
     selecionado = listbox.get(listbox.curselection())
 listbox.bind("<<ListboxSelect>>", selecao)
+
+
 
 app.mainloop()
