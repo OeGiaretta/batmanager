@@ -38,7 +38,7 @@ echo  31 - Gerar CPF
 echo  32 - Validar CPF
 echo  33 - Gerar CNPJ
 echo  34 - Validar CNPJ
-
+echo  35 - Criar uma Excecao no Antivirus (Windows Defender)
 
 echo =====================
 echo   X para sair
@@ -79,6 +79,7 @@ if "%input%"=="31" goto:gerarcpf
 if "%input%"=="32" goto:validarcpf
 if "%input%"=="33" goto:gerarcnpj
 if "%input%"=="34" goto:validarcnpj
+if "%input%"=="35" goto:antExcecao
 
 if "%input%"=="x" goto:exit
 
@@ -162,7 +163,7 @@ set "username=%fullusername:*\=%"
 exit /b
 goto:options
 
-rem Fim do Comando
+rem Fim do Comado
 
 :ripconfig
 set /p input11="informe o ip ou nome: "
@@ -356,6 +357,23 @@ curl -s -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "acao=va
 type temp.txt
 pause
 goto options
+
+:antExcecao
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Solicitando privilegios de administrador...
+    powershell -Command "Start-Process '%~f0' -Verb RunAs"
+    exit /b
+)
+set /p input1="Digite o caminho do Priori Social: "
+powershell -Command "Add-MpPreference -ExclusionPath '%input1%'"
+echo.
+echo Lista de exclusoes atuais:
+powershell -Command "(Get-MpPreference).ExclusionPath"
+pause
+goto options
+
+
 
 :exit
 exit
