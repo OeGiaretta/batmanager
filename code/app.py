@@ -33,11 +33,9 @@ buttonAlterar = ctk.CTkButton(bottombar, text="Alterar", command=0)
 buttonAlterar.place(x=715, y=90)
 buttonAlterar._set_appearance_mode("dark")
 
-
-buttonExcluir = ctk.CTkButton(bottombar, text="Excluir", command=0)
+buttonExcluir = ctk.CTkButton(bottombar, text="Excluir", command=fnc.delScript) 
 buttonExcluir.place(x=715, y=135)
 buttonExcluir._set_appearance_mode("dark")
-
 
 buttonExecutar = ctk.CTkButton(bottombar, text="Executar", command=0)
 buttonExecutar.place(x=715, y=180)
