@@ -3,13 +3,15 @@ import tkinter as tk
 import tkinter.font as tkFont
 import pandas as pd
 import functions as fnc
-import json 
+import json
 from functions import *
 
+listbox = None
+
 with open(
-    "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
-    encoding="utf-8"
-    ) as f:
+    "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json",
+    encoding="utf-8",
+) as f:
     ferramentas = json.load(f)
 
 opcao = []
@@ -25,19 +27,40 @@ bottombar = ctk.CTkFrame(app, height=250, corner_radius=0)
 bottombar.pack(side="bottom", fill="x")
 bottombar._set_appearance_mode("dark")
 
-buttonIncluir = ctk.CTkButton(bottombar, text="Incluir", command=fnc.Inclusao)
+buttonIncluir = ctk.CTkButton(
+    bottombar, 
+    text="Incluir", 
+    command=lambda: fnc.Inclusao(
+
+    )
+)
+
 buttonIncluir.place(x=715, y=45)
 buttonIncluir._set_appearance_mode("dark")
 
-buttonAlterar = ctk.CTkButton(bottombar, text="Alterar", command=0)
+buttonAlterar = ctk.CTkButton(
+    bottombar, 
+    text="Alterar", 
+    command=0
+    )
 buttonAlterar.place(x=715, y=90)
 buttonAlterar._set_appearance_mode("dark")
 
-buttonExcluir = ctk.CTkButton(bottombar, text="Excluir", command=fnc.delScript) 
+buttonExcluir = ctk.CTkButton(
+    bottombar, 
+    text="Excluir", 
+    command=lambda: fnc.delScript(
+    
+        )
+)
 buttonExcluir.place(x=715, y=135)
 buttonExcluir._set_appearance_mode("dark")
 
-buttonExecutar = ctk.CTkButton(bottombar, text="Executar", command=0)
+buttonExecutar = ctk.CTkButton(
+    bottombar, 
+    text="Executar", 
+    command=0
+    )
 buttonExecutar.place(x=715, y=180)
 buttonExecutar._set_appearance_mode("dark")
 
@@ -47,19 +70,21 @@ fontListbox = tkFont.Font(family="Arial", size=11)
 listbox = tk.Listbox(
     bottombar, 
     height=10, 
-    width=80, 
-    selectmode=tk.SINGLE,
+    width=73, 
+    selectmode=tk.SINGLE, 
     font=fontListbox
-    )
+)
 listbox.place(x=30, y=45)
 for item in ferramentas:
     listbox.insert(tk.END, item["Descrição"])
 
+
 # Adicionando na lista
 def selecao(event):
     selecionado = listbox.get(listbox.curselection())
-listbox.bind("<<ListboxSelect>>", selecao)
 
+
+listbox.bind("<<ListboxSelect>>", selecao)
 
 
 app.mainloop()

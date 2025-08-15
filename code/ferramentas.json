@@ -118,9 +118,5 @@
     {
         "Descrição": "Criar novo projeto JAVA",
         "Script": "call mvn archetype:generate -DgroupId=com.main -DartifactId=<nome_projeto> -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false"
-    },
-    {
-        "Descrição": "teste",
-        "Script": "teste"
     }
 ]

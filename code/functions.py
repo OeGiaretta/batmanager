@@ -10,6 +10,7 @@ global eScript, inScript, app, listbox, atualizar_listbox
 eScript = 0
 inScript = 0
 
+app = ctk.CTk()
 
 # Atualiza a listbox na janela principal
 def atualizar_listbox():
@@ -26,7 +27,6 @@ def Inclusao():
     ) as f:
         ferramentas = json.load(f)
 
-    app = ctk.CTk()
     app.title("Inclusão de Script")
     app.geometry("500x500")
     app._set_appearance_mode("dark")
@@ -78,12 +78,13 @@ def Inclusao():
     inCommand = ctk.CTkButton(app, text="Incluir", command=incluir_script)
     inCommand.place(x=180, y=400)
     inCommand._set_appearance_mode("dark")
-    atualizar_listbox()
+
 
     app.mainloop()
 
 # Deletar Script
 def delScript():
+    from app import listbox, ferramentas
     selecionado = listbox.curselection()
     if selecionado:
         idx = selecionado[0]
@@ -93,7 +94,6 @@ def delScript():
         with open("c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", "w", encoding="utf-8") as f:
             json.dump(ferramentas, f, indent=4, ensure_ascii=False)
         listbox.delete(idx)
-        atualizar_listbox()
 
 
 
