@@ -49,9 +49,7 @@ buttonAlterar._set_appearance_mode("dark")
 buttonExcluir = ctk.CTkButton(
     bottombar, 
     text="Excluir", 
-    command=lambda: fnc.delScript(
-    
-        )
+    command=lambda: fnc.delScript(listbox, ferramentas)
 )
 buttonExcluir.place(x=715, y=135)
 buttonExcluir._set_appearance_mode("dark")
@@ -85,6 +83,9 @@ def selecao(event):
 
 
 listbox.bind("<<ListboxSelect>>", selecao)
+
+
+
 
 
 app.mainloop()

@@ -13,11 +13,8 @@ inScript = 0
 app = ctk.CTk()
 
 # Atualiza a listbox na janela principal
-def atualizar_listbox():
-    global ferramentas
-    listbox.delete(0, tk.END)
-    for item in ferramentas:
-        listbox.insert(tk.END, item["Descrição"])
+# def atualizar_listbox():
+
 
 def Inclusao():
 
@@ -83,17 +80,20 @@ def Inclusao():
     app.mainloop()
 
 # Deletar Script
-def delScript():
-    from app import listbox, ferramentas
-    selecionado = listbox.curselection()
-    if selecionado:
-        idx = selecionado[0]
-        with open("c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", encoding="utf-8") as f:
-            ferramentas = json.load(f)
-        ferramentas.pop(idx)
-        with open("c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", "w", encoding="utf-8") as f:
+def delScript(listbox, ferramentas):
+
+    # Obtém o índice do item selecionado
+    selected_index = listbox.curselection()
+    
+    if selected_index:
+        # Remove o item da lista de ferramentas
+        del ferramentas[selected_index[0]]
+        
+        # Atualiza o arquivo JSON
+        with open(
+            "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
+            "w", 
+            encoding="utf-8"
+        ) as f:
             json.dump(ferramentas, f, indent=4, ensure_ascii=False)
-        listbox.delete(idx)
-
-
-
+        
