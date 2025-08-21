@@ -87,8 +87,4 @@ for item in ferramentas:
 listbox.bind("<<ListboxSelect>>", selecao)
 
 
-
-
-
-
 app.mainloop()
