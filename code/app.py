@@ -4,8 +4,8 @@ import tkinter.font as tkFont
 import pandas as pd
 import functions as fnc
 import json
-from functions import *
 
+opcao = []
 listbox = None
 
 with open(
@@ -14,15 +14,18 @@ with open(
 ) as f:
     ferramentas = json.load(f)
 
-opcao = []
+def selecao(event):
+    selecionado = listbox.get(listbox.curselection())
 
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("dark-blue")
+
+# Inicia o programa
 app = ctk.CTk()
 app.title("BatManager")
 app.geometry("900x650")
-app._set_appearance_mode("dark")
 
 # BottomBar e botões
-
 bottombar = ctk.CTkFrame(app, height=250, corner_radius=0)
 bottombar.pack(side="bottom", fill="x")
 bottombar._set_appearance_mode("dark")
@@ -30,9 +33,7 @@ bottombar._set_appearance_mode("dark")
 buttonIncluir = ctk.CTkButton(
     bottombar, 
     text="Incluir", 
-    command=lambda: fnc.Inclusao(
-
-    )
+    command=lambda: fnc.Inclusao(app) 
 )
 
 buttonIncluir.place(x=715, y=45)
@@ -75,12 +76,6 @@ listbox = tk.Listbox(
 listbox.place(x=30, y=45)
 for item in ferramentas:
     listbox.insert(tk.END, item["Descrição"])
-
-
-# Adicionando na lista
-def selecao(event):
-    selecionado = listbox.get(listbox.curselection())
-
 
 listbox.bind("<<ListboxSelect>>", selecao)
 
