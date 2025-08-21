@@ -5,18 +5,7 @@ import pandas as pd
 import subprocess as sp
 import json 
 
-global eScript, inScript, app, listbox, atualizar_listbox
-
-eScript = 0
-inScript = 0
-
-app = ctk.CTk()
-
-# Atualiza a listbox na janela principal
-# def atualizar_listbox():
-
-
-def Inclusao():
+def Inclusao(app):
 
     with open(
     "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
@@ -24,15 +13,15 @@ def Inclusao():
     ) as f:
         ferramentas = json.load(f)
 
-    app.title("Inclusão de Script")
-    app.geometry("500x500")
-    app._set_appearance_mode("dark")
+    janela = ctk.CTkToplevel(app)
+    janela.title("Inclusão de Script")
+    janela.geometry("500x500")
 
     fontScript = ctk.CTkFont(family="Arial", size=20)
 
     # Entrada da Descrição
     eDesc = ctk.CTkEntry(
-        app, placeholder_text="Descrição", 
+        janela, placeholder_text="Descrição", 
         height=50, 
         width=300, 
         font=fontScript
@@ -43,7 +32,7 @@ def Inclusao():
     eDesc._set_appearance_mode("dark")
 
     # Entrada do Script
-    eScript = ctk.CTkEntry(app, 
+    eScript = ctk.CTkEntry(janela, 
                         placeholder_text="Digite o comando/script", 
                         height=180, 
                         width=300, 
@@ -69,15 +58,12 @@ def Inclusao():
                 json.dump(ferramentas, f, indent=4, ensure_ascii=False)
             
         # Fecha a janela de inclusão
-            app.destroy()
+            janela.destroy()
 
     # Botão de inclusão
-    inCommand = ctk.CTkButton(app, text="Incluir", command=incluir_script)
+    inCommand = ctk.CTkButton(janela, text="Incluir", command=incluir_script)
     inCommand.place(x=180, y=400)
     inCommand._set_appearance_mode("dark")
-
-
-    app.mainloop()
 
 # Deletar Script
 def delScript(listbox, ferramentas):
