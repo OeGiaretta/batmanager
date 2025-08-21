@@ -5,7 +5,7 @@ import pandas as pd
 import subprocess as sp
 import json 
 
-def Inclusao(app):
+def Inclusao(app, callback=None):
 
     with open(
     "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json", 
@@ -16,6 +16,8 @@ def Inclusao(app):
     janela = ctk.CTkToplevel(app)
     janela.title("Inclusão de Script")
     janela.geometry("500x500")
+    janela.lift()
+    janela.grab_set()
 
     fontScript = ctk.CTkFont(family="Arial", size=20)
 
@@ -29,8 +31,6 @@ def Inclusao(app):
     eDesc.place(x=100, y=25)
     inDesc = eDesc.get()
 
-    eDesc._set_appearance_mode("dark")
-
     # Entrada do Script
     eScript = ctk.CTkEntry(janela, 
                         placeholder_text="Digite o comando/script", 
@@ -40,7 +40,6 @@ def Inclusao(app):
                         )
     eScript.place(x=100, y=180)
     inScript = eScript.get()
-    eScript._set_appearance_mode("dark")
 
     def incluir_script():
     # Verifica se os campos estão preenchidos
@@ -59,15 +58,19 @@ def Inclusao(app):
             
         # Fecha a janela de inclusão
             janela.destroy()
+            
+        # Atualiza a Listbox se uma função de callback for fornecida
+            if callback:
+                callback()
 
     # Botão de inclusão
     inCommand = ctk.CTkButton(janela, text="Incluir", command=incluir_script)
     inCommand.place(x=180, y=400)
-    inCommand._set_appearance_mode("dark")
+
 
 # Deletar Script
 def delScript(listbox, ferramentas):
-
+        
     # Obtém o índice do item selecionado
     selected_index = listbox.curselection()
     

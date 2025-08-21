@@ -6,7 +6,6 @@ import functions as fnc
 import json
 
 opcao = []
-listbox = None
 
 with open(
     "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json",
@@ -14,6 +13,18 @@ with open(
 ) as f:
     ferramentas = json.load(f)
 
+# Função para atualizar a Listbox
+def atualizar_listbox():
+    listbox.delete(0, tk.END)
+    with open(
+        "c:/Users/Eduardo/Documents/Learn/dev/batmanager/code/ferramentas.json",
+        encoding="utf-8",
+    ) as f:
+        ferramentas_atualizadas = json.load(f)
+    for item in ferramentas_atualizadas:
+        listbox.insert(tk.END, item["Descrição"])
+
+# Função para selecionar o item da Listbox
 def selecao(event):
     selecionado = listbox.get(listbox.curselection())
 
@@ -28,16 +39,14 @@ app.geometry("900x650")
 # BottomBar e botões
 bottombar = ctk.CTkFrame(app, height=250, corner_radius=0)
 bottombar.pack(side="bottom", fill="x")
-bottombar._set_appearance_mode("dark")
 
 buttonIncluir = ctk.CTkButton(
     bottombar, 
     text="Incluir", 
-    command=lambda: fnc.Inclusao(app) 
+    command=lambda: fnc.Inclusao(app, atualizar_listbox)
 )
 
 buttonIncluir.place(x=715, y=45)
-buttonIncluir._set_appearance_mode("dark")
 
 buttonAlterar = ctk.CTkButton(
     bottombar, 
@@ -45,15 +54,14 @@ buttonAlterar = ctk.CTkButton(
     command=0
     )
 buttonAlterar.place(x=715, y=90)
-buttonAlterar._set_appearance_mode("dark")
+
 
 buttonExcluir = ctk.CTkButton(
     bottombar, 
     text="Excluir", 
     command=lambda: fnc.delScript(listbox, ferramentas)
-)
+    )
 buttonExcluir.place(x=715, y=135)
-buttonExcluir._set_appearance_mode("dark")
 
 buttonExecutar = ctk.CTkButton(
     bottombar, 
@@ -61,7 +69,6 @@ buttonExecutar = ctk.CTkButton(
     command=0
     )
 buttonExecutar.place(x=715, y=180)
-buttonExecutar._set_appearance_mode("dark")
 
 # List
 
@@ -78,6 +85,7 @@ for item in ferramentas:
     listbox.insert(tk.END, item["Descrição"])
 
 listbox.bind("<<ListboxSelect>>", selecao)
+
 
 
 
