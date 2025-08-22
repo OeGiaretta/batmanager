@@ -114,9 +114,5 @@
     {
         "Descrição": "Fechar programas p/Rede",
         "Script": "taskkill /IM nome_programa.exe /F"
-    },
-    {
-        "Descrição": "teste",
-        "Script": "teste"
     }
 ]
